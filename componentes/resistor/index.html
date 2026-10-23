@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Resistor · Componentes · Oficina de Robótica SELFÍS</title><meta name="description" content="O resistor limita a corrente elétrica em um circuito. Ao ser percorrido pela corrente, ele converte parte da energia elétrica em calor e provoca uma queda de tensão. Sua resistência é medida em ohms (Ω) e indicada por faixas coloridas no corpo. Nesta oficina usamos resistores de 220 Ω para proteger os LEDs.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/style.css"><link rel="icon" href="../../assets/img/ledBig.svg">
+</head><body><header class="top">
+  <div class="logos"><span class="logo"><img src="../../assets/logos/logo-snct.png" alt="SNCT" onerror="this.parentNode.classList.add('vazio')"><b>SNCT</b></span><span class="sep"></span><span class="logo"><img src="../../assets/logos/logo-selfis.png" alt="SELFÍS" onerror="this.parentNode.classList.add('vazio')"><b>SELFÍS</b></span><span class="sep"></span><span class="logo"><img src="../../assets/logos/logo-if.png" alt="IFNMG · Campus Salinas" onerror="this.parentNode.classList.add('vazio')"><b>IFNMG · Campus Salinas</b></span></div>
+  <nav><a href="../../index.html">Início</a><a href="../../componentes/index.html">Componentes</a><a href="../../pratica-1/index.html">Prática 1</a><a href="../../pratica-2/index.html">Prática 2</a><a href="../../pratica-3/index.html">Prática 3</a></nav>
+</header><main>
+  <section class="hero comp-hero">
+    <div class="hero-txt">
+      <span class="tag">Componente</span>
+      <h1><span class="br">[</span> Resistor <span class="br">]</span></h1>
+      <div class="jump"><a href="#oque" class="cta ghost">O que é</a><a href="#tipos" class="cta ghost">Tipos</a><a href="#montagem" class="cta ghost">Montagem</a><a href="#codigo" class="cta">Código exemplo ↓</a></div>
+    </div>
+    <div class="comp-img"><img src="../../assets/img/resistorBig.svg" alt="Resistor"></div>
+  </section>
+
+  <section id="oque" class="grid2 eq">
+    <div class="panel dark"><h2>O que é um Resistor?</h2><p class="txt">O resistor limita a corrente elétrica em um circuito. Ao ser percorrido pela corrente, ele converte parte da energia elétrica em calor e provoca uma queda de tensão. Sua resistência é medida em ohms (Ω) e indicada por faixas coloridas no corpo. Nesta oficina usamos resistores de 220 Ω para proteger os LEDs.</p></div>
+    <div class="panel yellow center"><h2>Código de cores</h2><div class="cores"><span style="background:#1A1A1A;color:#fff">Preto<b>0</b></span><span style="background:#7B4A1E;color:#fff">Marrom<b>1</b></span><span style="background:#D32F2F;color:#fff">Vermelho<b>2</b></span><span style="background:#F57C00;color:#fff">Laranja<b>3</b></span><span style="background:#FBC02D;color:#263238">Amarelo<b>4</b></span><span style="background:#388E3C;color:#fff">Verde<b>5</b></span><span style="background:#1E5BB8;color:#fff">Azul<b>6</b></span><span style="background:#7B1FA2;color:#fff">Violeta<b>7</b></span><span style="background:#8D8D8D;color:#fff">Cinza<b>8</b></span><span style="background:#FAFAFA;color:#263238">Branco<b>9</b></span></div></div>
+  </section>
+
+  <section class="steps"><div class="step-head"><span class="num">?</span><div><h2>Como funciona</h2></div></div>
+    <div class="grid2 eq flat">
+      <div><p>O resistor <b>dificulta a passagem da corrente</b> elétrica. Quanto maior a resistência, menor a corrente para uma mesma tensão. Essa relação é a <b>1ª Lei de Ohm</b>: <code>V = R · I</code>.</p><p>Ao ser percorrido pela corrente, o resistor transforma parte da energia elétrica em calor (efeito Joule) e “fica” com uma parte da tensão do circuito. É assim que ele protege o LED.</p><p>O valor é indicado por <b>faixas coloridas</b>: as duas primeiras são algarismos, a terceira é o multiplicador e a última, separada, é a tolerância.</p></div>
+      <figure class="fig"><a href="../../assets/img/resistorBands.svg" target="_blank" rel="noopener"><img class="esquema" src="../../assets/img/resistorBands.svg" alt="Para um LED (2 V, 20 mA) numa fonte de 5 V: R = (5 − 2) ÷ 0,02 = 150 Ω → usamos 220 Ω, o valor comercial seguinte, e a corrente fica em ≈ 14 mA."></a><figcaption>Leitura do resistor de 220 Ω: vermelho (2), vermelho (2), marrom (×10) = 220 Ω.</figcaption></figure>
+    </div>
+    <figure class="fig wide"><a href="../../assets/img/ledCircuit.svg" target="_blank" rel="noopener"><img class="esquema" src="../../assets/img/ledCircuit.svg" alt="Para um LED (2 V, 20 mA) numa fonte de 5 V: R = (5 − 2) ÷ 0,02 = 150 Ω → usamos 220 Ω, o valor comercial seguinte, e a corrente fica em ≈ 14 mA."></a><figcaption>Para um LED (2 V, 20 mA) numa fonte de 5 V: R = (5 − 2) ÷ 0,02 = 150 Ω → usamos 220 Ω, o valor comercial seguinte, e a corrente fica em ≈ 14 mA.</figcaption></figure>
+  </section>
+
+  <section id="tipos"><h2 class="sec">Tipos</h2><div class="tipos"><div class="tipo"><h3>Filme de carbono</h3><p>O mais comum e barato, com tolerância de 5% (faixa dourada).</p></div><div class="tipo"><h3>Filme metálico</h3><p>Mais preciso (1%), normalmente com 5 faixas.</p></div><div class="tipo"><h3>SMD</h3><p>Minúsculo, soldado direto na superfície das placas, como no próprio Arduino.</p></div><div class="tipo"><h3>De potência</h3><p>Corpo maior, de cerâmica, para correntes e potências altas.</p></div></div></section>
+
+  <section class="panel lime ficha"><h2>Ficha técnica</h2><ul><li>Unidade: ohm (Ω); 1 kΩ = 1 000 Ω</li><li>220 Ω: vermelho · vermelho · marrom · dourado</li><li>10 kΩ: marrom · preto · laranja · dourado</li><li>1 kΩ: marrom · preto · vermelho · dourado</li><li>Potência típica dos resistores de kit: 1/4 W</li><li>Não tem polaridade: pode ser ligado em qualquer sentido</li></ul></section>
+
+  <section id="montagem"><h2 class="sec">Montagem dos componentes</h2>
+    <div class="grid2">
+      <div class="panel blue"><a href="../../assets/img/exDivisor.svg" target="_blank" rel="noopener"><img class="esquema" src="../../assets/img/exDivisor.svg" alt="Divisor de tensão: dois resistores de 220 Ω em série entre 5V e GND. O ponto do meio vai ao A0."></a><p class="zoom">Divisor de tensão: dois resistores de 220 Ω em série entre 5V e GND. O ponto do meio vai ao A0.</p></div>
+      <div class="side">
+        <div class="panel lime"><h2>Você vai precisar de</h2><ul class="comp"><li><b>1×</b> Arduino Uno R3 + cabo USB</li><li><b>1×</b> Protoboard</li><li><b>2×</b> Resistores de 220 Ω</li><li><b>4×</b> Jumpers macho-macho</li></ul></div>
+        <div class="panel dark"><h2>Ligações</h2><table class="lig"><tr><th>5V</th><td>Primeiro resistor (R1)</td></tr><tr><th>Ponto entre R1 e R2</th><td>A0</td></tr><tr><th>Segundo resistor (R2)</th><td>Trilha (−)</td></tr><tr><th>GND</th><td>Trilha (−)</td></tr></table></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="codigo"><h2 class="sec">#&lt; código exemplo &gt;</h2><p class="intro">Abra o <b>Monitor Serial</b> (9600). Como os dois resistores são iguais, cada um fica com metade da tensão: o valor medido deve ficar perto de <b>2,5 V</b>. Experimente trocar um deles por 10 kΩ e explique o novo valor.</p><div class="code">
+    <div class="code-bar"><span class="dots"><i></i><i></i><i></i></span><span class="fname">ex_resistor_divisor.ino</span>
+      <span class="actions"><button class="btn-copy" data-target="ex_resistor_divisor.ino">Copiar</button><a class="btn-dl" href="../../assets/codigos/ex_resistor_divisor.ino" download>Baixar .ino</a></span></div>
+    <pre id="ex_resistor_divisor.ino"><code><span class="c">/*
+  Oficina de Robótica SELFÍS — Componente: Resistor
+  Exemplo: divisor de tensão com dois resistores de 220 ohms em série.
+  Ligações: 5V -&gt; R1 -&gt; ponto do meio -&gt; R2 -&gt; GND | ponto do meio -&gt; A0
+  Resultado esperado: cerca de 2,5 V no ponto do meio (metade de 5 V).
+*/</span>
+
+<span class="k">void</span> <span class="f">setup</span>() {
+  <span class="f">Serial</span>.<span class="f">begin</span>(<span class="n">9600</span>);            <span class="c">// abre o Monitor Serial</span>
+}
+
+<span class="k">void</span> <span class="f">loop</span>() {
+  <span class="k">int</span> leitura = <span class="f">analogRead</span>(<span class="n">A0</span>);              <span class="c">// 0 a 1023</span>
+  <span class="k">float</span> tensao = leitura * (<span class="n">5.0</span> / <span class="n">1023.0</span>);   <span class="c">// converte para volts</span>
+
+  <span class="f">Serial</span>.<span class="f">print</span>(<span class="s">"Leitura: "</span>);
+  <span class="f">Serial</span>.<span class="f">print</span>(leitura);
+  <span class="f">Serial</span>.<span class="f">print</span>(<span class="s">"  |  Tensao no ponto do meio: "</span>);
+  <span class="f">Serial</span>.<span class="f">print</span>(tensao, <span class="n">2</span>);
+  <span class="f">Serial</span>.<span class="f">println</span>(<span class="s">" V"</span>);
+
+  <span class="f">delay</span>(<span class="n">500</span>);
+}
+</code></pre>
+  </div>
+    <p class="alerta">💡 Teste primeiro no <b>Tinkercad</b> (Circuitos → Código → Texto → cole o código → Iniciar simulação). Depois carregue na placa real pela Arduino IDE.</p></section>
+
+  <section><h2 class="sec">Use este componente nas práticas</h2><div class="cards mini">
+    <a class="card" href="../../pratica-1/index.html" style="--c:#E53935"><img src="../../assets/img/pratica1.svg" alt=""><div><span class="tag">Prática 1</span><h3>Semáforo</h3><span class="go">Abrir roteiro →</span></div></a>
+  </div></section>
+
+  <nav class="pager"><a href="../../componentes/protoboard/index.html">← Protoboard</a><a href="../../componentes/led/index.html">LED →</a></nav></main><footer><p><b>Oficina de Robótica com Arduino</b> · VII SELFÍS na IV SNCT · IFNMG – Campus Salinas · 2026</p><p>Prof. Clayton Ramos da Silva</p></footer><script src="../../assets/app.js"></script></body></html>

@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LED · Componentes · Oficina de Robótica SELFÍS</title><meta name="description" content="LED é a sigla de Light Emitting Diode, ou Diodo Emissor de Luz: um componente que transforma energia elétrica em luz. Por ser um diodo, ele é polarizado — a corrente só passa do ânodo (+) para o cátodo (−). Ligado ao contrário, não acende. Gasta pouca energia, dura muito e aparece em semáforos, painéis, telas e lanternas.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/style.css"><link rel="icon" href="../../assets/img/ledBig.svg">
+</head><body><header class="top">
+  <div class="logos"><span class="logo"><img src="../../assets/logos/logo-snct.png" alt="SNCT" onerror="this.parentNode.classList.add('vazio')"><b>SNCT</b></span><span class="sep"></span><span class="logo"><img src="../../assets/logos/logo-selfis.png" alt="SELFÍS" onerror="this.parentNode.classList.add('vazio')"><b>SELFÍS</b></span><span class="sep"></span><span class="logo"><img src="../../assets/logos/logo-if.png" alt="IFNMG · Campus Salinas" onerror="this.parentNode.classList.add('vazio')"><b>IFNMG · Campus Salinas</b></span></div>
+  <nav><a href="../../index.html">Início</a><a href="../../componentes/index.html">Componentes</a><a href="../../pratica-1/index.html">Prática 1</a><a href="../../pratica-2/index.html">Prática 2</a><a href="../../pratica-3/index.html">Prática 3</a></nav>
+</header><main>
+  <section class="hero comp-hero">
+    <div class="hero-txt">
+      <span class="tag">Componente</span>
+      <h1><span class="br">[</span> LED <span class="br">]</span></h1>
+      <div class="jump"><a href="#oque" class="cta ghost">O que é</a><a href="#tipos" class="cta ghost">Tipos</a><a href="#montagem" class="cta ghost">Montagem</a><a href="#codigo" class="cta">Código exemplo ↓</a></div>
+    </div>
+    <div class="comp-img"><img src="../../assets/img/ledBig.svg" alt="LED"></div>
+  </section>
+
+  <section id="oque" class="grid2 eq">
+    <div class="panel dark"><h2>O que é um LED?</h2><p class="txt">LED é a sigla de Light Emitting Diode, ou Diodo Emissor de Luz: um componente que transforma energia elétrica em luz. Por ser um diodo, ele é polarizado — a corrente só passa do ânodo (+) para o cátodo (−). Ligado ao contrário, não acende. Gasta pouca energia, dura muito e aparece em semáforos, painéis, telas e lanternas.</p></div>
+    <div class="panel yellow center"><a href="../../assets/img/ledInternal.svg" target="_blank" rel="noopener"><img class="esquema" src="../../assets/img/ledInternal.svg" alt="Estrutura interna de um LED de 5 mm."></a><p class="cap">Estrutura interna de um LED de 5 mm.</p></div>
+  </section>
+
+  <section class="steps"><div class="step-head"><span class="num">?</span><div><h2>Como funciona</h2></div></div>
+    <div class="grid2 eq flat">
+      <div><p>Dentro do LED há um pequeno <b>chip semicondutor</b> formado por duas regiões (P e N). Quando a corrente passa do ânodo para o cátodo, elétrons e lacunas se recombinam nessa junção e liberam energia na forma de <b>luz</b>.</p><p>A <b>cor</b> depende do material do semicondutor, e não da cor da cápsula. LEDs vermelhos precisam de cerca de 2 V para acender; azuis e brancos, de cerca de 3 V.</p><p>Como todo diodo, o LED só conduz num sentido. Ligado ao contrário, ele simplesmente não acende. Ligado sem resistor, a corrente sobe muito e ele queima.</p></div>
+      <figure class="fig"><a href="../../assets/img/ledSymbol.svg" target="_blank" rel="noopener"><img class="esquema" src="../../assets/img/ledSymbol.svg" alt="Símbolo do LED e identificação das pernas: a longa é o ânodo (+); a curta, do lado do chanfro, é o cátodo (−)."></a><figcaption>Símbolo do LED e identificação das pernas: a longa é o ânodo (+); a curta, do lado do chanfro, é o cátodo (−).</figcaption></figure>
+    </div>
+    
+  </section>
+
+  <section id="tipos"><h2 class="sec">Tipos</h2><div class="tipos"><div class="tipo"><h3>5 mm e 3 mm</h3><p>Os modelos “de encaixe” mais comuns em kits e protótipos.</p></div><div class="tipo"><h3>Alto brilho</h3><p>Cápsula transparente e luz bem mais forte, usados em lanternas e sinalização.</p></div><div class="tipo"><h3>SMD</h3><p>Minúsculos, usados em telas, lâmpadas e no próprio Arduino (LED “L”).</p></div><div class="tipo"><h3>Infravermelho</h3><p>Emite luz invisível; é o que existe no controle remoto da TV.</p></div></div></section>
+
+  <section class="panel lime ficha"><h2>Ficha técnica</h2><ul><li>Tensão direta: ≈ 2 V (vermelho, amarelo, verde) · ≈ 3 V (azul, branco)</li><li>Corrente típica: 10 a 20 mA</li><li>Resistor recomendado com 5 V: 220 Ω a 330 Ω</li><li>Perna longa = ânodo (+) · perna curta = cátodo (−)</li><li>Lado reto (chanfro) da cápsula = cátodo</li></ul></section>
+
+  <section id="montagem"><h2 class="sec">Montagem dos componentes</h2>
+    <div class="grid2">
+      <div class="panel blue"><a href="../../assets/img/exBlink.svg" target="_blank" rel="noopener"><img class="esquema" src="../../assets/img/exBlink.svg" alt="LED no pino 13 com resistor de 220 Ω até o GND."></a><p class="zoom">LED no pino 13 com resistor de 220 Ω até o GND.</p></div>
+      <div class="side">
+        <div class="panel lime"><h2>Você vai precisar de</h2><ul class="comp"><li><b>1×</b> Arduino Uno R3 + cabo USB</li><li><b>1×</b> Protoboard</li><li><b>1×</b> LED 5 mm</li><li><b>1×</b> Resistor de 220 Ω</li><li><b>2×</b> Jumpers macho-macho</li></ul></div>
+        <div class="panel dark"><h2>Ligações</h2><table class="lig"><tr><th>Pino 13</th><td>Perna longa (+) do LED</td></tr><tr><th>Perna curta (−) do LED</th><td>Resistor de 220 Ω → trilha (−)</td></tr><tr><th>GND</th><td>Trilha (−)</td></tr></table></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="codigo"><h2 class="sec">#&lt; código exemplo &gt;</h2><p class="intro">O LED pisca “SOS” em código Morse: três sinais curtos, três longos e três curtos. Repare na função <code>sinal()</code>, criada para não repetir o mesmo trecho de código.</p><div class="code">
+    <div class="code-bar"><span class="dots"><i></i><i></i><i></i></span><span class="fname">ex_led_sos.ino</span>
+      <span class="actions"><button class="btn-copy" data-target="ex_led_sos.ino">Copiar</button><a class="btn-dl" href="../../assets/codigos/ex_led_sos.ino" download>Baixar .ino</a></span></div>
+    <pre id="ex_led_sos.ino"><code><span class="c">/*
+  Oficina de Robótica SELFÍS — Componente: LED
+  Exemplo: o LED transmite "SOS" em código Morse ( . . .  - - -  . . . )
+  Ligações: pino 13 -&gt; perna longa do LED | perna curta -&gt; resistor 220 ohms -&gt; GND
+*/</span>
+
+<span class="k">const</span> <span class="k">int</span> PINO_LED = <span class="n">13</span>;
+<span class="k">const</span> <span class="k">int</span> PONTO = <span class="n">200</span>;      <span class="c">// duração de um ponto, em ms</span>
+<span class="k">const</span> <span class="k">int</span> TRACO = <span class="n">600</span>;      <span class="c">// um traço vale 3 pontos</span>
+
+<span class="k">void</span> <span class="f">setup</span>() {
+  <span class="f">pinMode</span>(PINO_LED, <span class="n">OUTPUT</span>);
+}
+
+<span class="c">// Acende o LED por um tempo e depois faz uma pausa curta</span>
+<span class="k">void</span> sinal(<span class="k">int</span> duracao) {
+  <span class="f">digitalWrite</span>(PINO_LED, <span class="n">HIGH</span>);
+  <span class="f">delay</span>(duracao);
+  <span class="f">digitalWrite</span>(PINO_LED, <span class="n">LOW</span>);
+  <span class="f">delay</span>(PONTO);
+}
+
+<span class="k">void</span> <span class="f">loop</span>() {
+  <span class="k">for</span> (<span class="k">int</span> i = <span class="n">0</span>; i &lt; <span class="n">3</span>; i++) sinal(PONTO);   <span class="c">// S = . . .</span>
+  <span class="f">delay</span>(TRACO);
+  <span class="k">for</span> (<span class="k">int</span> i = <span class="n">0</span>; i &lt; <span class="n">3</span>; i++) sinal(TRACO);   <span class="c">// O = - - -</span>
+  <span class="f">delay</span>(TRACO);
+  <span class="k">for</span> (<span class="k">int</span> i = <span class="n">0</span>; i &lt; <span class="n">3</span>; i++) sinal(PONTO);   <span class="c">// S = . . .</span>
+  <span class="f">delay</span>(<span class="n">2000</span>);                                <span class="c">// pausa antes de repetir</span>
+}
+</code></pre>
+  </div>
+    <p class="alerta">💡 Teste primeiro no <b>Tinkercad</b> (Circuitos → Código → Texto → cole o código → Iniciar simulação). Depois carregue na placa real pela Arduino IDE.</p></section>
+
+  <section><h2 class="sec">Use este componente nas práticas</h2><div class="cards mini">
+    <a class="card" href="../../pratica-1/index.html" style="--c:#E53935"><img src="../../assets/img/pratica1.svg" alt=""><div><span class="tag">Prática 1</span><h3>Semáforo</h3><span class="go">Abrir roteiro →</span></div></a>
+  </div></section>
+
+  <nav class="pager"><a href="../../componentes/resistor/index.html">← Resistor</a><a href="../../componentes/potenciometro/index.html">Potenciômetro →</a></nav></main><footer><p><b>Oficina de Robótica com Arduino</b> · VII SELFÍS na IV SNCT · IFNMG – Campus Salinas · 2026</p><p>Prof. Clayton Ramos da Silva</p></footer><script src="../../assets/app.js"></script></body></html>

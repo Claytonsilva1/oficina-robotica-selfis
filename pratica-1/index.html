@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prática 1: Semáforo · Oficina de Robótica SELFÍS</title><meta name="description" content="Programar três LEDs para funcionarem como um semáforo, usando saídas digitais do Arduino.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css"><link rel="icon" href="../assets/img/ledBig.svg">
+</head><body><header class="top">
+  <div class="logos"><span class="logo"><img src="../assets/logos/logo-snct.png" alt="SNCT" onerror="this.parentNode.classList.add('vazio')"><b>SNCT</b></span><span class="sep"></span><span class="logo"><img src="../assets/logos/logo-selfis.png" alt="SELFÍS" onerror="this.parentNode.classList.add('vazio')"><b>SELFÍS</b></span><span class="sep"></span><span class="logo"><img src="../assets/logos/logo-if.png" alt="IFNMG · Campus Salinas" onerror="this.parentNode.classList.add('vazio')"><b>IFNMG · Campus Salinas</b></span></div>
+  <nav><a href="../index.html">Início</a><a href="../componentes/index.html">Componentes</a><a href="../pratica-1/index.html">Prática 1</a><a href="../pratica-2/index.html">Prática 2</a><a href="../pratica-3/index.html">Prática 3</a></nav>
+</header><main>
+  <section class="hero" style="--c:#E53935">
+    <div class="hero-txt">
+      <span class="tag">Prática 1</span>
+      <h1><span class="br">[</span> Semáforo <span class="br">]</span></h1>
+      <p class="lead">Programar três LEDs para funcionarem como um semáforo, usando saídas digitais do Arduino.</p>
+      <ul class="meta"><li>⏱ 30 a 40 min</li><li>🧪 Tinkercad + montagem real</li><li>🔌 Arduino Uno R3</li></ul>
+      <div class="jump"><a href="#codigo" class="cta">Ir para o código ↓</a><a href="#tinkercad" class="cta ghost">Roteiro passo a passo</a></div>
+    </div>
+    <div class="hero-learn"><h3>Você vai aprender</h3><ul><li>Saídas digitais: <code>pinMode</code>, <code>digitalWrite</code>, <code>HIGH</code> e <code>LOW</code></li><li>Uso de <code>delay()</code> para controlar o tempo</li><li>Polaridade do LED e função do resistor</li></ul></div>
+  </section>
+
+  <section class="grid2">
+    <div class="panel blue"><h2>Esquema ilustrado</h2><a href="../assets/img/pratica1.svg" target="_blank" rel="noopener"><img class="esquema" src="../assets/img/pratica1.svg" alt="Esquema de montagem da prática 1"></a><p class="zoom">Toque na imagem para ampliar</p></div>
+    <div class="side">
+      <div class="panel lime"><h2>Componentes</h2><ul class="comp"><li><b>1×</b> Arduino Uno R3 + cabo USB</li><li><b>1×</b> Protoboard</li><li><b>3×</b> LEDs 5 mm (vermelho, amarelo e verde)</li><li><b>3×</b> Resistores de 220 Ω (vermelho · vermelho · marrom)</li><li><b>4×</b> Jumpers macho-macho</li></ul></div>
+      <div class="panel dark"><h2>Ligações</h2><table class="lig"><tr><th>Pino 10</th><td>LED vermelho — perna longa (+)</td></tr><tr><th>Pino 9</th><td>LED amarelo — perna longa (+)</td></tr><tr><th>Pino 8</th><td>LED verde — perna longa (+)</td></tr><tr><th>Perna curta (−) de cada LED</th><td>Resistor de 220 Ω → trilha negativa (−)</td></tr><tr><th>GND</th><td>Trilha negativa (−) da protoboard</td></tr></table></div>
+    </div>
+  </section>
+
+  <section class="steps" id="tinkercad">
+    <div class="step-head"><span class="num">1</span><div><h2>Teste no Tinkercad</h2><p>Monte e simule o circuito no computador antes de mexer nos componentes.</p></div></div>
+    <ol><li>Acesse <b>tinkercad.com</b>, entre na sua conta (ou na conta da turma) e clique em <b>Circuitos → Criar novo circuito</b>.</li><li>No painel de componentes (à direita), procure <b>Arduino Uno R3</b> e arraste-o para a área de trabalho. Faça o mesmo com uma <b>placa de ensaio (protoboard) pequena</b>.</li><li>Arraste <b>3 LEDs</b> para a protoboard. Clique em cada um e escolha a cor no inspetor: vermelho, amarelo e verde. Encaixe cada LED com as pernas em <b>linhas numeradas diferentes</b>.</li><li>Arraste <b>3 resistores</b>. O Tinkercad cria o resistor com 1 kΩ: clique nele e mude a <b>Resistência</b> para <b>220 Ω</b>. Ligue cada resistor entre a perna curta (cátodo) de um LED e a trilha negativa (−).</li><li>Crie os fios clicando em um furo e depois no outro: <b>pino 10</b> → perna longa do vermelho, <b>pino 9</b> → amarelo, <b>pino 8</b> → verde, e <b>GND</b> → trilha (−). Dica: clique no fio para mudar a cor (preto para GND).</li><li>Clique em <b>Código</b>, troque <b>Blocos</b> por <b>Texto</b> (confirme o aviso), apague o exemplo e cole o código desta página.</li><li>Clique em <b>Iniciar simulação</b>. Os LEDs devem acender na ordem verde → amarelo → vermelho. Se algum LED não acender, passe o mouse sobre as pernas: o Tinkercad mostra qual é o ânodo e qual é o cátodo.</li></ol>
+  </section>
+  <section class="steps" id="real">
+    <div class="step-head"><span class="num">2</span><div><h2>Montagem real</h2><p>Agora com a placa, a protoboard e os componentes de verdade.</p></div></div>
+    <ol><li>Com o cabo USB <b>desconectado</b>, encaixe os três LEDs na protoboard, como no esquema. A perna <b>mais longa</b> (ânodo, +) fica na linha que vai receber o fio do pino.</li><li>Encaixe um resistor de 220 Ω entre a linha da perna curta de cada LED e a trilha negativa (−).</li><li>Ligue os jumpers: pino 10, 9 e 8 do Arduino nas linhas das pernas longas dos LEDs vermelho, amarelo e verde. Ligue um GND do Arduino na trilha (−).</li><li>Confira cada ligação com o esquema e com a tabela de ligações antes de seguir.</li><li>Conecte o cabo USB ao computador e abra a <b>Arduino IDE</b>. Em <b>Ferramentas → Placa</b>, escolha <b>Arduino Uno</b>; em <b>Ferramentas → Porta</b>, escolha a porta que apareceu (COM3, COM4… no Windows).</li><li>Cole o código, clique em <b>✓ Verificar</b> e depois em <b>→ Carregar</b>. Quando aparecer “Carregamento concluído”, observe o semáforo funcionando.</li></ol>
+    <p class="alerta">⚠️ Sempre monte ou altere o circuito com o cabo USB <b>desconectado</b>. Nunca ligue o 5V diretamente no GND.</p>
+  </section>
+
+  <section id="codigo"><h2 class="sec">#&lt; código &gt;</h2><div class="code">
+    <div class="code-bar"><span class="dots"><i></i><i></i><i></i></span><span class="fname">pratica1_semaforo.ino</span>
+      <span class="actions"><button class="btn-copy" data-target="pratica1_semaforo.ino">Copiar</button><a class="btn-dl" href="../assets/codigos/pratica1_semaforo.ino" download>Baixar .ino</a></span></div>
+    <pre id="pratica1_semaforo.ino"><code><span class="c">/*
+  Oficina de Robótica SELFÍS — Prática 1: Semáforo
+  Placa: Arduino Uno R3
+  Ligações: LED vermelho -&gt; pino 10 | LED amarelo -&gt; pino 9 | LED verde -&gt; pino 8
+            (cada LED com um resistor de 220 ohms ligado ao GND)
+*/</span>
+
+<span class="c">// 1) Damos nomes aos pinos: fica mais fácil ler e alterar o código</span>
+<span class="k">const</span> <span class="k">int</span> LED_VERMELHO = <span class="n">10</span>;
+<span class="k">const</span> <span class="k">int</span> LED_AMARELO  = <span class="n">9</span>;
+<span class="k">const</span> <span class="k">int</span> LED_VERDE    = <span class="n">8</span>;
+
+<span class="c">// 2) Tempos de cada fase, em milissegundos (1000 ms = 1 segundo)</span>
+<span class="k">const</span> <span class="k">int</span> TEMPO_VERDE    = <span class="n">4000</span>;
+<span class="k">const</span> <span class="k">int</span> TEMPO_AMARELO  = <span class="n">1500</span>;
+<span class="k">const</span> <span class="k">int</span> TEMPO_VERMELHO = <span class="n">4000</span>;
+
+<span class="k">void</span> <span class="f">setup</span>() {
+  <span class="c">// setup() roda UMA vez, quando a placa liga</span>
+  <span class="f">pinMode</span>(LED_VERMELHO, <span class="n">OUTPUT</span>);  <span class="c">// o pino vai ENVIAR sinal (saída)</span>
+  <span class="f">pinMode</span>(LED_AMARELO,  <span class="n">OUTPUT</span>);
+  <span class="f">pinMode</span>(LED_VERDE,    <span class="n">OUTPUT</span>);
+}
+
+<span class="k">void</span> <span class="f">loop</span>() {
+  <span class="c">// loop() repete para sempre</span>
+
+  <span class="c">// Fase VERDE</span>
+  <span class="f">digitalWrite</span>(LED_VERDE, <span class="n">HIGH</span>);   <span class="c">// HIGH = 5 V = LED aceso</span>
+  <span class="f">digitalWrite</span>(LED_AMARELO, <span class="n">LOW</span>);  <span class="c">// LOW  = 0 V = LED apagado</span>
+  <span class="f">digitalWrite</span>(LED_VERMELHO, <span class="n">LOW</span>);
+  <span class="f">delay</span>(TEMPO_VERDE);              <span class="c">// espera</span>
+
+  <span class="c">// Fase AMARELA</span>
+  <span class="f">digitalWrite</span>(LED_VERDE, <span class="n">LOW</span>);
+  <span class="f">digitalWrite</span>(LED_AMARELO, <span class="n">HIGH</span>);
+  <span class="f">delay</span>(TEMPO_AMARELO);
+
+  <span class="c">// Fase VERMELHA</span>
+  <span class="f">digitalWrite</span>(LED_AMARELO, <span class="n">LOW</span>);
+  <span class="f">digitalWrite</span>(LED_VERMELHO, <span class="n">HIGH</span>);
+  <span class="f">delay</span>(TEMPO_VERMELHO);
+}
+</code></pre>
+  </div></section>
+
+  <section class="panel dark explica"><h2>Como funciona?</h2><p>Cada pino digital do Arduino só tem dois estados: <b>HIGH</b> (5 V) ou <b>LOW</b> (0 V). Com <code>digitalWrite(pino, HIGH)</code> o pino fornece 5 V e a corrente passa pelo LED e pelo resistor até o GND, acendendo o LED.</p><p>O resistor de 220 Ω limita a corrente a cerca de 14 mA. Sem ele, a corrente subiria muito e poderia queimar o LED e danificar o pino do Arduino.</p><p>A função <code>loop()</code> se repete sem parar; por isso o semáforo continua trocando de cor indefinidamente. O <code>delay()</code> “congela” o programa pelo tempo indicado, em milissegundos.</p></section>
+
+  <section class="grid2 eq">
+    <div class="panel yellow"><h2>Desafios</h2><ol><li>Mude os tempos para deixar o verde aceso por 6 s e o vermelho por 3 s.</li><li>Faça o semáforo entrar em <b>modo alerta</b>: o amarelo pisca 5 vezes ao fim de cada ciclo (solução abaixo).</li><li>Monte um segundo semáforo, de pedestres, com 2 LEDs (vermelho e verde), sincronizado com o primeiro.</li></ol>
+      <details><summary>Ver a solução do desafio 2</summary><div class="code">
+    <div class="code-bar"><span class="dots"><i></i><i></i><i></i></span><span class="fname">desafio1_pisca_alerta.ino</span>
+      <span class="actions"><button class="btn-copy" data-target="desafio1_pisca_alerta.ino">Copiar</button><a class="btn-dl" href="../assets/codigos/desafio1_pisca_alerta.ino" download>Baixar .ino</a></span></div>
+    <pre id="desafio1_pisca_alerta.ino"><code><span class="c">/*
+  Oficina de Robótica SELFÍS — Desafio da Prática 1
+  Semáforo com "modo alerta": depois de cada ciclo, o amarelo pisca 5 vezes.
+  Mesma montagem da Prática 1.
+*/</span>
+<span class="k">const</span> <span class="k">int</span> LED_VERMELHO = <span class="n">10</span>;
+<span class="k">const</span> <span class="k">int</span> LED_AMARELO  = <span class="n">9</span>;
+<span class="k">const</span> <span class="k">int</span> LED_VERDE    = <span class="n">8</span>;
+
+<span class="k">void</span> <span class="f">setup</span>() {
+  <span class="f">pinMode</span>(LED_VERMELHO, <span class="n">OUTPUT</span>);
+  <span class="f">pinMode</span>(LED_AMARELO,  <span class="n">OUTPUT</span>);
+  <span class="f">pinMode</span>(LED_VERDE,    <span class="n">OUTPUT</span>);
+}
+
+<span class="k">void</span> apagaTudo() {
+  <span class="f">digitalWrite</span>(LED_VERMELHO, <span class="n">LOW</span>);
+  <span class="f">digitalWrite</span>(LED_AMARELO,  <span class="n">LOW</span>);
+  <span class="f">digitalWrite</span>(LED_VERDE,    <span class="n">LOW</span>);
+}
+
+<span class="k">void</span> <span class="f">loop</span>() {
+  apagaTudo(); <span class="f">digitalWrite</span>(LED_VERDE, <span class="n">HIGH</span>);    <span class="f">delay</span>(<span class="n">4000</span>);
+  apagaTudo(); <span class="f">digitalWrite</span>(LED_AMARELO, <span class="n">HIGH</span>);  <span class="f">delay</span>(<span class="n">1500</span>);
+  apagaTudo(); <span class="f">digitalWrite</span>(LED_VERMELHO, <span class="n">HIGH</span>); <span class="f">delay</span>(<span class="n">4000</span>);
+
+  <span class="c">// Modo alerta: o laço "for" repete o bloco 5 vezes</span>
+  apagaTudo();
+  <span class="k">for</span> (<span class="k">int</span> i = <span class="n">0</span>; i &lt; <span class="n">5</span>; i++) {
+    <span class="f">digitalWrite</span>(LED_AMARELO, <span class="n">HIGH</span>);
+    <span class="f">delay</span>(<span class="n">400</span>);
+    <span class="f">digitalWrite</span>(LED_AMARELO, <span class="n">LOW</span>);
+    <span class="f">delay</span>(<span class="n">400</span>);
+  }
+}
+</code></pre>
+  </div></details></div>
+    <div class="panel lime"><h2>Não funcionou?</h2><dl><dt>Nenhum LED acende</dt><dd>Confira o GND ligado na trilha (−) e se os resistores vão até essa mesma trilha.</dd><dt>Um LED não acende</dt><dd>Ele provavelmente está invertido: gire 180°. Confira também se o fio está na mesma linha da perna longa.</dd><dt>Erro ao carregar o código</dt><dd>Verifique a placa (Arduino Uno) e a porta em Ferramentas. Em placas genéricas, pode ser preciso instalar o driver CH340.</dd></dl></div>
+  </section>
+
+  <section><h2 class="sec">Conheça os componentes desta prática</h2><div class="chips">
+    <a class="chip" href="../componentes/arduino/index.html"><img src="../assets/img/arduinoBig.svg" alt="">Arduino Uno R3</a><a class="chip" href="../componentes/protoboard/index.html"><img src="../assets/img/breadboardSmall.svg" alt="">Protoboard</a><a class="chip" href="../componentes/resistor/index.html"><img src="../assets/img/resistorBig.svg" alt="">Resistor</a><a class="chip" href="../componentes/led/index.html"><img src="../assets/img/ledBig.svg" alt="">LED</a>
+  </div></section>
+
+  <nav class="pager"><a href="../index.html">← Início</a><a href="../pratica-2/index.html">Prática 2: Dimmer com potenciômetro →</a></nav></main><footer><p><b>Oficina de Robótica com Arduino</b> · VII SELFÍS na IV SNCT · IFNMG – Campus Salinas · 2026</p><p>Prof. Clayton Ramos da Silva</p></footer><script src="../assets/app.js"></script></body></html>

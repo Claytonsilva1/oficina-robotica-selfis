@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Oficina de Robótica · SELFÍS</title><meta name="description" content="Roteiros e códigos da Oficina de Robótica com Arduino da SELFÍS.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css"><link rel="icon" href="assets/img/ledBig.svg">
+</head><body><header class="top">
+  <div class="logos"><span class="logo"><img src="assets/logos/logo-snct.png" alt="SNCT" onerror="this.parentNode.classList.add('vazio')"><b>SNCT</b></span><span class="sep"></span><span class="logo"><img src="assets/logos/logo-selfis.png" alt="SELFÍS" onerror="this.parentNode.classList.add('vazio')"><b>SELFÍS</b></span><span class="sep"></span><span class="logo"><img src="assets/logos/logo-if.png" alt="IFNMG · Campus Salinas" onerror="this.parentNode.classList.add('vazio')"><b>IFNMG · Campus Salinas</b></span></div>
+  <nav><a href="index.html">Início</a><a href="componentes/index.html">Componentes</a><a href="pratica-1/index.html">Prática 1</a><a href="pratica-2/index.html">Prática 2</a><a href="pratica-3/index.html">Prática 3</a></nav>
+</header><main>
+  <section class="hero home">
+    <div class="hero-txt">
+      <span class="tag">VII SELFÍS · IV SNCT</span>
+      <h1><span class="br">[</span> Oficina de Robótica <span class="br">]</span></h1>
+      <p class="lead">Três práticas com Arduino Uno R3 e componentes simples. Em cada uma, você primeiro testa o circuito no <b>Tinkercad</b> e depois monta o <b>protótipo real</b>.</p>
+      <div class="jump"><a href="#praticas" class="cta">Escolher uma prática ↓</a><a href="#componentes" class="cta ghost">Conhecer os componentes</a></div>
+    </div>
+    <img class="hero-img" src="assets/img/pratica3.svg" alt="Arduino e protoboard com LED RGB">
+  </section>
+
+  <section id="praticas"><h2 class="sec">Práticas</h2><div class="cards">
+    <a class="card" href="pratica-1/index.html" style="--c:#E53935"><img src="assets/img/pratica1.svg" alt=""><div><span class="tag">Prática 1</span><h3>Semáforo</h3><p>Programar três LEDs para funcionarem como um semáforo, usando saídas digitais do Arduino.</p><span class="go">Abrir roteiro →</span></div></a><a class="card" href="pratica-2/index.html" style="--c:#8E44AD"><img src="assets/img/pratica2.svg" alt=""><div><span class="tag">Prática 2</span><h3>Dimmer com potenciômetro</h3><p>Controlar o brilho de um LED girando um potenciômetro: o Arduino lê um valor analógico e responde com um sinal PWM.</p><span class="go">Abrir roteiro →</span></div></a><a class="card" href="pratica-3/index.html" style="--c:#1E5BB8"><img src="assets/img/pratica3.svg" alt=""><div><span class="tag">Prática 3</span><h3>Mistura de cores com LED RGB</h3><p>Criar cores misturando luz vermelha, verde e azul em um LED RGB, controlando cada cor com PWM.</p><span class="go">Abrir roteiro →</span></div></a>
+  </div></section>
+
+  <section id="antes" class="grid2 eq">
+    <div class="panel lime"><h2>Antes de começar</h2><ol>
+      <li><b>Tinkercad:</b> crie uma conta gratuita em tinkercad.com (ou entre com o código da turma).</li>
+      <li><b>Arduino IDE:</b> instale a versão 2 em arduino.cc/en/software.</li>
+      <li>Placas genéricas (com o chip CH340 perto do USB) podem precisar do driver <b>CH340</b> no Windows.</li>
+      <li>Na IDE: <b>Ferramentas → Placa → Arduino Uno</b> e <b>Ferramentas → Porta</b>.</li></ol></div>
+    <div class="panel dark"><h2>Regras de ouro</h2><ul>
+      <li>Monte com o cabo USB <b>desconectado</b>.</li>
+      <li>LED sempre com <b>resistor</b> (220 Ω).</li>
+      <li>Perna <b>longa</b> do LED = positivo (+).</li>
+      <li>Fio <b>vermelho</b> = 5V · fio <b>preto</b> = GND.</li>
+      <li>Nunca ligue 5V direto no GND.</li></ul></div>
+  </section>
+
+  <section id="componentes"><h2 class="sec">Componentes</h2><div class="comps"><a class="comp-card" href="componentes/arduino/index.html"><div class="ci"><img src="assets/img/arduinoBig.svg" alt=""></div><h3>Arduino Uno R3</h3><p>O Arduino Uno R3 é uma placa de prototipagem de código aberto baseada no microcontrolador ATmega328P.</p><span class="go">Ver componente →</span></a><a class="comp-card" href="componentes/protoboard/index.html"><div class="ci"><img src="assets/img/breadboardSmall.svg" alt=""></div><h3>Protoboard</h3><p>A protoboard (ou breadboard) é uma placa cheia de furos com contatos metálicos por dentro, usada para montar circuitos temporários sem solda.</p><span class="go">Ver componente →</span></a><a class="comp-card" href="componentes/resistor/index.html"><div class="ci"><img src="assets/img/resistorBig.svg" alt=""></div><h3>Resistor</h3><p>O resistor limita a corrente elétrica em um circuito.</p><span class="go">Ver componente →</span></a><a class="comp-card" href="componentes/led/index.html"><div class="ci"><img src="assets/img/ledBig.svg" alt=""></div><h3>LED</h3><p>LED é a sigla de Light Emitting Diode, ou Diodo Emissor de Luz: um componente que transforma energia elétrica em luz.</p><span class="go">Ver componente →</span></a><a class="comp-card" href="componentes/potenciometro/index.html"><div class="ci"><img src="assets/img/potBig.svg" alt=""></div><h3>Potenciômetro</h3><p>O potenciômetro é um resistor variável.</p><span class="go">Ver componente →</span></a><a class="comp-card" href="componentes/led-rgb/index.html"><div class="ci"><img src="assets/img/rgbBig.svg" alt=""></div><h3>LED RGB</h3><p>O LED RGB reúne três LEDs em uma só cápsula: vermelho (R, red), verde (G, green) e azul (B, blue).</p><span class="go">Ver componente →</span></a></div></section></main><footer><p><b>Oficina de Robótica com Arduino</b> · VII SELFÍS na IV SNCT · IFNMG – Campus Salinas · 2026</p><p>Prof. Clayton Ramos da Silva</p></footer><script src="assets/app.js"></script></body></html>

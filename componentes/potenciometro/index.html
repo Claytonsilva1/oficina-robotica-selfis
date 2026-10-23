@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Potenciômetro · Componentes · Oficina de Robótica SELFÍS</title><meta name="description" content="O potenciômetro é um resistor variável. Ao girar o eixo, um contato deslizante (cursor) percorre uma trilha resistiva e muda a resistência entre o pino central e os pinos das pontas. Ligado entre 5 V e GND, ele funciona como divisor de tensão: o pino central entrega de 0 a 5 V, valor que o Arduino lê em uma entrada analógica.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/style.css"><link rel="icon" href="../../assets/img/ledBig.svg">
+</head><body><header class="top">
+  <div class="logos"><span class="logo"><img src="../../assets/logos/logo-snct.png" alt="SNCT" onerror="this.parentNode.classList.add('vazio')"><b>SNCT</b></span><span class="sep"></span><span class="logo"><img src="../../assets/logos/logo-selfis.png" alt="SELFÍS" onerror="this.parentNode.classList.add('vazio')"><b>SELFÍS</b></span><span class="sep"></span><span class="logo"><img src="../../assets/logos/logo-if.png" alt="IFNMG · Campus Salinas" onerror="this.parentNode.classList.add('vazio')"><b>IFNMG · Campus Salinas</b></span></div>
+  <nav><a href="../../index.html">Início</a><a href="../../componentes/index.html">Componentes</a><a href="../../pratica-1/index.html">Prática 1</a><a href="../../pratica-2/index.html">Prática 2</a><a href="../../pratica-3/index.html">Prática 3</a></nav>
+</header><main>
+  <section class="hero comp-hero">
+    <div class="hero-txt">
+      <span class="tag">Componente</span>
+      <h1><span class="br">[</span> Potenciômetro <span class="br">]</span></h1>
+      <div class="jump"><a href="#oque" class="cta ghost">O que é</a><a href="#tipos" class="cta ghost">Tipos</a><a href="#montagem" class="cta ghost">Montagem</a><a href="#codigo" class="cta">Código exemplo ↓</a></div>
+    </div>
+    <div class="comp-img"><img src="../../assets/img/potBig.svg" alt="Potenciômetro"></div>
+  </section>
+
+  <section id="oque" class="grid2 eq">
+    <div class="panel dark"><h2>O que é um Potenciômetro?</h2><p class="txt">O potenciômetro é um resistor variável. Ao girar o eixo, um contato deslizante (cursor) percorre uma trilha resistiva e muda a resistência entre o pino central e os pinos das pontas. Ligado entre 5 V e GND, ele funciona como divisor de tensão: o pino central entrega de 0 a 5 V, valor que o Arduino lê em uma entrada analógica.</p></div>
+    <div class="panel yellow center"><a href="../../assets/img/potInternal.svg" target="_blank" rel="noopener"><img class="esquema" src="../../assets/img/potInternal.svg" alt="Ao girar o eixo, o cursor muda o comprimento da trilha resistiva entre os pinos."></a><p class="cap">Ao girar o eixo, o cursor muda o comprimento da trilha resistiva entre os pinos.</p></div>
+  </section>
+
+  <section class="steps"><div class="step-head"><span class="num">?</span><div><h2>Como funciona</h2></div></div>
+    <div class="grid2 eq flat">
+      <div><p>Por dentro há uma <b>trilha resistiva</b> em forma de arco, ligada aos pinos 1 e 3, e um <b>cursor</b> (contato deslizante) ligado ao pino 2, no meio.</p><p>Entre os pinos 1 e 3 a resistência é sempre a total (10 kΩ, por exemplo). Ao girar o eixo, muda a resistência entre o cursor e cada uma das pontas: uma aumenta enquanto a outra diminui.</p><p>Ligado entre 5 V e GND, o potenciômetro vira um <b>divisor de tensão</b>: o pino do meio entrega qualquer tensão entre 0 e 5 V, que o Arduino lê como um número de 0 a 1023.</p></div>
+      <figure class="fig"><a href="../../assets/img/potDivider.svg" target="_blank" rel="noopener"><img class="esquema" src="../../assets/img/potDivider.svg" alt="O potenciômetro como divisor de tensão ligado à entrada A0."></a><figcaption>O potenciômetro como divisor de tensão ligado à entrada A0.</figcaption></figure>
+    </div>
+    
+  </section>
+
+  <section id="tipos"><h2 class="sec">Tipos</h2><div class="tipos"><div class="tipo"><h3>Rotativo</h3><p>O mais comum: gira cerca de 270°. É o botão de volume de rádios e caixas de som.</p></div><div class="tipo"><h3>Deslizante (slider)</h3><p>O cursor anda em linha reta, como nas mesas de som.</p></div><div class="tipo"><h3>Trimpot</h3><p>Pequeno, ajustado com chave de fenda e usado para calibrar circuitos.</p></div><div class="tipo"><h3>Linear (B) × logarítmico (A)</h3><p>No linear (B10K), a resistência muda por igual ao girar. O logarítmico (A10K) é próprio para áudio.</p></div></div></section>
+
+  <section class="panel lime ficha"><h2>Ficha técnica</h2><ul><li>Valor usado na oficina: 10 kΩ, linear (marcação B10K)</li><li>Pinos 1 e 3: pontas da trilha · pino 2: cursor</li><li>No Arduino: pontas no 5V e no GND, meio no A0</li><li>Inverter os pinos 1 e 3 inverte o sentido do giro</li></ul></section>
+
+  <section id="montagem"><h2 class="sec">Montagem dos componentes</h2>
+    <div class="grid2">
+      <div class="panel blue"><a href="../../assets/img/exPot.svg" target="_blank" rel="noopener"><img class="esquema" src="../../assets/img/exPot.svg" alt="Potenciômetro ligado ao 5V, ao A0 (pino do meio) e ao GND."></a><p class="zoom">Potenciômetro ligado ao 5V, ao A0 (pino do meio) e ao GND.</p></div>
+      <div class="side">
+        <div class="panel lime"><h2>Você vai precisar de</h2><ul class="comp"><li><b>1×</b> Arduino Uno R3 + cabo USB</li><li><b>1×</b> Protoboard</li><li><b>1×</b> Potenciômetro de 10 kΩ</li><li><b>4×</b> Jumpers macho-macho</li></ul></div>
+        <div class="panel dark"><h2>Ligações</h2><table class="lig"><tr><th>5V</th><td>Pino 1 (ponta)</td></tr><tr><th>A0</th><td>Pino 2 (meio, cursor)</td></tr><tr><th>GND</th><td>Trilha (−) → pino 3 (ponta)</td></tr></table></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="codigo"><h2 class="sec">#&lt; código exemplo &gt;</h2><p class="intro">Abra o <b>Monitor Serial</b> (9600) e gire o eixo: a leitura vai de 0 a 1023, a tensão de 0 a 5 V e a posição de 0 a 100%. No <b>Plotter Serial</b> dá para ver o gráfico em tempo real.</p><div class="code">
+    <div class="code-bar"><span class="dots"><i></i><i></i><i></i></span><span class="fname">ex_potenciometro_leitura.ino</span>
+      <span class="actions"><button class="btn-copy" data-target="ex_potenciometro_leitura.ino">Copiar</button><a class="btn-dl" href="../../assets/codigos/ex_potenciometro_leitura.ino" download>Baixar .ino</a></span></div>
+    <pre id="ex_potenciometro_leitura.ino"><code><span class="c">/*
+  Oficina de Robótica SELFÍS — Componente: Potenciômetro
+  Exemplo: ler a posição do potenciômetro no Monitor Serial.
+  Ligações: 5V -&gt; pino 1 | A0 -&gt; pino 2 (meio) | GND -&gt; pino 3
+*/</span>
+
+<span class="k">void</span> <span class="f">setup</span>() {
+  <span class="f">Serial</span>.<span class="f">begin</span>(<span class="n">9600</span>);
+}
+
+<span class="k">void</span> <span class="f">loop</span>() {
+  <span class="k">int</span> leitura = <span class="f">analogRead</span>(<span class="n">A0</span>);                    <span class="c">// 0 a 1023</span>
+  <span class="k">float</span> tensao = leitura * (<span class="n">5.0</span> / <span class="n">1023.0</span>);         <span class="c">// 0 a 5 V</span>
+  <span class="k">int</span> porcento = <span class="f">map</span>(leitura, <span class="n">0</span>, <span class="n">1023</span>, <span class="n">0</span>, <span class="n">100</span>);    <span class="c">// 0 a 100 %</span>
+
+  <span class="f">Serial</span>.<span class="f">print</span>(<span class="s">"Leitura: "</span>);
+  <span class="f">Serial</span>.<span class="f">print</span>(leitura);
+  <span class="f">Serial</span>.<span class="f">print</span>(<span class="s">"  |  "</span>);
+  <span class="f">Serial</span>.<span class="f">print</span>(tensao, <span class="n">2</span>);
+  <span class="f">Serial</span>.<span class="f">print</span>(<span class="s">" V  |  "</span>);
+  <span class="f">Serial</span>.<span class="f">print</span>(porcento);
+  <span class="f">Serial</span>.<span class="f">println</span>(<span class="s">" %"</span>);
+
+  <span class="f">delay</span>(<span class="n">200</span>);
+}
+</code></pre>
+  </div>
+    <p class="alerta">💡 Teste primeiro no <b>Tinkercad</b> (Circuitos → Código → Texto → cole o código → Iniciar simulação). Depois carregue na placa real pela Arduino IDE.</p></section>
+
+  <section><h2 class="sec">Use este componente nas práticas</h2><div class="cards mini">
+    <a class="card" href="../../pratica-2/index.html" style="--c:#8E44AD"><img src="../../assets/img/pratica2.svg" alt=""><div><span class="tag">Prática 2</span><h3>Dimmer com potenciômetro</h3><span class="go">Abrir roteiro →</span></div></a>
+  </div></section>
+
+  <nav class="pager"><a href="../../componentes/led/index.html">← LED</a><a href="../../componentes/led-rgb/index.html">LED RGB →</a></nav></main><footer><p><b>Oficina de Robótica com Arduino</b> · VII SELFÍS na IV SNCT · IFNMG – Campus Salinas · 2026</p><p>Prof. Clayton Ramos da Silva</p></footer><script src="../../assets/app.js"></script></body></html>

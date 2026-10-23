@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 120" width="300" height="120" ><g stroke="#fff" stroke-width="2.4" fill="none">
+    <path d="M40,90 V30 H110"/><rect x="110" y="20" width="50" height="20" rx="2"/><path d="M160,30 H210"/>
+    <path d="M210,18 L210,42 L232,30 Z" fill="#FFD54F" stroke="#FFD54F"/><line x1="233" y1="18" x2="233" y2="42"/>
+    <path d="M233,30 H260 V90 H180"/><line x1="160" y1="78" x2="160" y2="102"/><line x1="168" y1="84" x2="168" y2="96"/><path d="M160,90 H40"/>
+  </g>
+  <text x="135" y="14" font-family="Poppins, 'Open Sans', Arial, sans-serif" font-size="11" fill="#FFD54F" font-weight="700" text-anchor="middle">R = ?</text><text x="222" y="62" font-family="Poppins, 'Open Sans', Arial, sans-serif" font-size="10" fill="#fff" font-weight="600" text-anchor="middle">LED 2 V · 20 mA</text>
+  <text x="164" y="116" font-family="Poppins, 'Open Sans', Arial, sans-serif" font-size="10" fill="#fff" font-weight="600" text-anchor="middle">fonte 5 V</text></svg>

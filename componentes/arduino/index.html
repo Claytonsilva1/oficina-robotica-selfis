@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arduino Uno R3 · Componentes · Oficina de Robótica SELFÍS</title><meta name="description" content="O Arduino Uno R3 é uma placa de prototipagem de código aberto baseada no microcontrolador ATmega328P. Ela lê sinais pelas entradas, executa o programa que escrevemos e controla LEDs, motores e outros dispositivos pelas saídas. É programada em C/C++ na Arduino IDE (gratuita, em arduino.cc) e pode ser testada virtualmente no Tinkercad antes da montagem real.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/style.css"><link rel="icon" href="../../assets/img/ledBig.svg">
+</head><body><header class="top">
+  <div class="logos"><span class="logo"><img src="../../assets/logos/logo-snct.png" alt="SNCT" onerror="this.parentNode.classList.add('vazio')"><b>SNCT</b></span><span class="sep"></span><span class="logo"><img src="../../assets/logos/logo-selfis.png" alt="SELFÍS" onerror="this.parentNode.classList.add('vazio')"><b>SELFÍS</b></span><span class="sep"></span><span class="logo"><img src="../../assets/logos/logo-if.png" alt="IFNMG · Campus Salinas" onerror="this.parentNode.classList.add('vazio')"><b>IFNMG · Campus Salinas</b></span></div>
+  <nav><a href="../../index.html">Início</a><a href="../../componentes/index.html">Componentes</a><a href="../../pratica-1/index.html">Prática 1</a><a href="../../pratica-2/index.html">Prática 2</a><a href="../../pratica-3/index.html">Prática 3</a></nav>
+</header><main>
+  <section class="hero comp-hero">
+    <div class="hero-txt">
+      <span class="tag">Componente</span>
+      <h1><span class="br">[</span> Arduino Uno R3 <span class="br">]</span></h1>
+      <div class="jump"><a href="#oque" class="cta ghost">O que é</a><a href="#tipos" class="cta ghost">Tipos</a><a href="#montagem" class="cta ghost">Montagem</a><a href="#codigo" class="cta">Código exemplo ↓</a></div>
+    </div>
+    <div class="comp-img"><img src="../../assets/img/arduinoBig.svg" alt="Arduino Uno R3"></div>
+  </section>
+
+  <section id="oque" class="grid2 eq">
+    <div class="panel dark"><h2>O que é o Arduino Uno R3?</h2><p class="txt">O Arduino Uno R3 é uma placa de prototipagem de código aberto baseada no microcontrolador ATmega328P. Ela lê sinais pelas entradas, executa o programa que escrevemos e controla LEDs, motores e outros dispositivos pelas saídas. É programada em C/C++ na Arduino IDE (gratuita, em arduino.cc) e pode ser testada virtualmente no Tinkercad antes da montagem real.</p></div>
+    <div class="panel yellow center"><a href="../../assets/img/arduinoParts.svg" target="_blank" rel="noopener"><img class="esquema" src="../../assets/img/arduinoParts.svg" alt="As principais partes da placa."></a><p class="cap">As principais partes da placa.</p></div>
+  </section>
+
+  <section class="steps"><div class="step-head"><span class="num">?</span><div><h2>Como funciona</h2></div></div>
+    <div class="grid2 eq flat">
+      <div><p>O coração da placa é o <b>microcontrolador ATmega328P</b>, um pequeno computador num único chip. Ele guarda o programa que enviamos pelo cabo USB e o executa sem parar, enquanto a placa estiver ligada.</p><p>Todo programa de Arduino tem duas partes: <code>setup()</code>, que roda <b>uma vez</b> quando a placa liga, e <code>loop()</code>, que se <b>repete para sempre</b>.</p><p>Os <b>pinos digitais</b> (0 a 13) trabalham com dois estados: ligado (5 V) ou desligado (0 V). Os pinos com <b>~</b> (3, 5, 6, 9, 10 e 11) também geram PWM, que simula valores intermediários. As <b>entradas analógicas</b> (A0 a A5) medem tensões de 0 a 5 V.</p></div>
+      <figure class="fig"><a href="../../assets/img/arduinoPinout.svg" target="_blank" rel="noopener"><img class="esquema" src="../../assets/img/arduinoPinout.svg" alt="Diagrama de pinos simplificado do Arduino Uno R3."></a><figcaption>Diagrama de pinos simplificado do Arduino Uno R3.</figcaption></figure>
+    </div>
+    
+  </section>
+
+  <section id="tipos"><h2 class="sec">Tipos</h2><div class="tipos"><div class="tipo"><h3>Uno R3</h3><p>A placa mais usada para aprender. Tem pinos fáceis de encaixar e é a que usamos na oficina.</p></div><div class="tipo"><h3>Nano</h3><p>Mesmo chip do Uno numa placa bem menor, que encaixa direto na protoboard.</p></div><div class="tipo"><h3>Mega 2560</h3><p>Muito mais pinos (54 digitais e 16 analógicos), para projetos grandes.</p></div><div class="tipo"><h3>Leonardo</h3><p>Pode se passar por teclado ou mouse quando ligado ao computador.</p></div></div></section>
+
+  <section class="panel lime ficha"><h2>Ficha técnica</h2><ul><li>Microcontrolador: ATmega328P (16 MHz)</li><li>Tensão de operação: 5 V</li><li>Alimentação: USB ou 7–12 V pelo jack</li><li>14 pinos digitais, 6 deles com PWM (~)</li><li>6 entradas analógicas (A0–A5), com 10 bits (0 a 1023)</li><li>Corrente recomendada: 20 mA por pino (máximo absoluto de 40 mA)</li><li>Memória de programa: 32 KB</li></ul></section>
+
+  <section id="montagem"><h2 class="sec">Montagem dos componentes</h2>
+    <div class="grid2">
+      <div class="panel blue"><a href="../../assets/img/arduinoBig.svg" target="_blank" rel="noopener"><img class="esquema" src="../../assets/img/arduinoBig.svg" alt="Neste exemplo não é preciso montar nada: basta ligar a placa ao computador pelo cabo USB."></a><p class="zoom">Neste exemplo não é preciso montar nada: basta ligar a placa ao computador pelo cabo USB.</p></div>
+      <div class="side">
+        <div class="panel lime"><h2>Você vai precisar de</h2><ul class="comp"><li><b>1×</b> Arduino Uno R3</li><li><b>1×</b> Cabo USB</li></ul></div>
+        <div class="panel dark"><h2>Ligações</h2><table class="lig"><tr><th>USB</th><td>Computador</td></tr></table></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="codigo"><h2 class="sec">#&lt; código exemplo &gt;</h2><p class="intro">O exemplo “Blink” pisca o LED <b>L</b>, que já vem soldado na placa e ligado ao pino 13. Se ele piscar a cada segundo, a placa, o cabo e a Arduino IDE estão funcionando.</p><div class="code">
+    <div class="code-bar"><span class="dots"><i></i><i></i><i></i></span><span class="fname">ex_arduino_blink.ino</span>
+      <span class="actions"><button class="btn-copy" data-target="ex_arduino_blink.ino">Copiar</button><a class="btn-dl" href="../../assets/codigos/ex_arduino_blink.ino" download>Baixar .ino</a></span></div>
+    <pre id="ex_arduino_blink.ino"><code><span class="c">/*
+  Oficina de Robótica SELFÍS — Componente: Arduino Uno R3
+  Exemplo: "Blink" — o primeiro programa de quem começa com Arduino.
+  Não precisa montar nada: usa o LED "L" que já vem soldado na placa (pino 13).
+*/</span>
+
+<span class="k">void</span> <span class="f">setup</span>() {
+  <span class="f">pinMode</span>(<span class="n">LED_BUILTIN</span>, <span class="n">OUTPUT</span>);   <span class="c">// LED_BUILTIN é o pino 13 no Arduino Uno</span>
+}
+
+<span class="k">void</span> <span class="f">loop</span>() {
+  <span class="f">digitalWrite</span>(<span class="n">LED_BUILTIN</span>, <span class="n">HIGH</span>); <span class="c">// acende o LED da placa</span>
+  <span class="f">delay</span>(<span class="n">1000</span>);                     <span class="c">// espera 1 segundo</span>
+  <span class="f">digitalWrite</span>(<span class="n">LED_BUILTIN</span>, <span class="n">LOW</span>);  <span class="c">// apaga</span>
+  <span class="f">delay</span>(<span class="n">1000</span>);                     <span class="c">// espera 1 segundo</span>
+}
+</code></pre>
+  </div>
+    <p class="alerta">💡 Teste primeiro no <b>Tinkercad</b> (Circuitos → Código → Texto → cole o código → Iniciar simulação). Depois carregue na placa real pela Arduino IDE.</p></section>
+
+  <section><h2 class="sec">Use este componente nas práticas</h2><div class="cards mini">
+    <a class="card" href="../../pratica-1/index.html" style="--c:#E53935"><img src="../../assets/img/pratica1.svg" alt=""><div><span class="tag">Prática 1</span><h3>Semáforo</h3><span class="go">Abrir roteiro →</span></div></a><a class="card" href="../../pratica-2/index.html" style="--c:#8E44AD"><img src="../../assets/img/pratica2.svg" alt=""><div><span class="tag">Prática 2</span><h3>Dimmer com potenciômetro</h3><span class="go">Abrir roteiro →</span></div></a><a class="card" href="../../pratica-3/index.html" style="--c:#1E5BB8"><img src="../../assets/img/pratica3.svg" alt=""><div><span class="tag">Prática 3</span><h3>Mistura de cores com LED RGB</h3><span class="go">Abrir roteiro →</span></div></a>
+  </div></section>
+
+  <nav class="pager"><a href="../../componentes/index.html">← Todos os componentes</a><a href="../../componentes/protoboard/index.html">Protoboard →</a></nav></main><footer><p><b>Oficina de Robótica com Arduino</b> · VII SELFÍS na IV SNCT · IFNMG – Campus Salinas · 2026</p><p>Prof. Clayton Ramos da Silva</p></footer><script src="../../assets/app.js"></script></body></html>

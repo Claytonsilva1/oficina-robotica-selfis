@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 230" width="320" height="230" >
+    <path d="M40,190 V70 A50,50 0 0 1 140,70 V190 Z" fill="#E53935" opacity=".35" stroke="#B71C1C" stroke-width="2"/>
+    <rect x="34" y="176" width="112" height="14" rx="3" fill="#E53935" opacity=".55"/>
+    <path d="M70,230 V150 H62 V120 H96 V140 H78 V230 Z" fill="#B0B4B8" stroke="#6E7378" stroke-width="1.5"/>
+    <path d="M112,230 V140 H104 V122 H120 V230 Z" fill="#D4D7DA" stroke="#6E7378" stroke-width="1.5"/>
+    <rect x="74" y="112" width="12" height="9" fill="#FFD54F" stroke="#8D6E00"/>
+    <path d="M80,112 Q96,88 112,122" fill="none" stroke="#FFE082" stroke-width="2"/>
+    <line x1="122" y1="52" x2="170" y2="32" stroke="#fff" stroke-width="1.6"/><circle cx="122" cy="52" r="2.6" fill="#fff"/><rect x="170" y="22" width="97.4" height="20" rx="10" fill="#fff"/><text x="178" y="36" font-family="Poppins, 'Open Sans', Arial, sans-serif" font-size="11" fill="#2B2B2B" font-weight="600" text-anchor="start">LENTE EPÓXI</text>
+    <line x1="98" y1="97" x2="170" y2="70" stroke="#fff" stroke-width="1.6"/><circle cx="98" cy="97" r="2.6" fill="#fff"/><rect x="170" y="60" width="119.60000000000001" height="20" rx="10" fill="#fff"/><text x="178" y="74" font-family="Poppins, 'Open Sans', Arial, sans-serif" font-size="11" fill="#2B2B2B" font-weight="600" text-anchor="start">FIO DE LIGAÇÃO</text>
+    <line x1="80" y1="116" x2="170" y2="108" stroke="#fff" stroke-width="1.6"/><circle cx="80" cy="116" r="2.6" fill="#fff"/><rect x="170" y="98" width="141.8" height="20" rx="10" fill="#fff"/><text x="178" y="112" font-family="Poppins, 'Open Sans', Arial, sans-serif" font-size="11" fill="#2B2B2B" font-weight="600" text-anchor="start">CHIP SEMICONDUTOR</text>
+    <line x1="70" y1="140" x2="170" y2="146" stroke="#fff" stroke-width="1.6"/><circle cx="70" cy="140" r="2.6" fill="#fff"/><rect x="170" y="136" width="90" height="20" rx="10" fill="#fff"/><text x="178" y="150" font-family="Poppins, 'Open Sans', Arial, sans-serif" font-size="11" fill="#2B2B2B" font-weight="600" text-anchor="start">CÁTODO (−)</text>
+    <line x1="116" y1="200" x2="170" y2="184" stroke="#fff" stroke-width="1.6"/><circle cx="116" cy="200" r="2.6" fill="#fff"/><rect x="170" y="174" width="82.60000000000001" height="20" rx="10" fill="#fff"/><text x="178" y="188" font-family="Poppins, 'Open Sans', Arial, sans-serif" font-size="11" fill="#2B2B2B" font-weight="600" text-anchor="start">ÂNODO (+)</text>
+    <text x="70" y="226" font-family="Poppins, 'Open Sans', Arial, sans-serif" font-size="1" fill="#2B2B2B" font-weight="400" text-anchor="start"></text></svg>

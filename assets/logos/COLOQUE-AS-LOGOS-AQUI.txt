@@ -1,0 +1,8 @@
+Coloque nesta pasta as logos (PNG, de preferência com fundo transparente), com estes nomes EXATOS:
+
+  logo-snct.png    -> lamparina da SNCT
+  logo-selfis.png  -> logo da SELFÍS
+  logo-if.png      -> IFNMG Campus Salinas
+
+Tudo em letras minúsculas, com hífen, sem espaço e sem acento.
+Enquanto um arquivo não existir, o site mostra o nome em texto no lugar da logo.

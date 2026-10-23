@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prática 2: Dimmer com potenciômetro · Oficina de Robótica SELFÍS</title><meta name="description" content="Controlar o brilho de um LED girando um potenciômetro: o Arduino lê um valor analógico e responde com um sinal PWM.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css"><link rel="icon" href="../assets/img/ledBig.svg">
+</head><body><header class="top">
+  <div class="logos"><span class="logo"><img src="../assets/logos/logo-snct.png" alt="SNCT" onerror="this.parentNode.classList.add('vazio')"><b>SNCT</b></span><span class="sep"></span><span class="logo"><img src="../assets/logos/logo-selfis.png" alt="SELFÍS" onerror="this.parentNode.classList.add('vazio')"><b>SELFÍS</b></span><span class="sep"></span><span class="logo"><img src="../assets/logos/logo-if.png" alt="IFNMG · Campus Salinas" onerror="this.parentNode.classList.add('vazio')"><b>IFNMG · Campus Salinas</b></span></div>
+  <nav><a href="../index.html">Início</a><a href="../componentes/index.html">Componentes</a><a href="../pratica-1/index.html">Prática 1</a><a href="../pratica-2/index.html">Prática 2</a><a href="../pratica-3/index.html">Prática 3</a></nav>
+</header><main>
+  <section class="hero" style="--c:#8E44AD">
+    <div class="hero-txt">
+      <span class="tag">Prática 2</span>
+      <h1><span class="br">[</span> Dimmer com potenciômetro <span class="br">]</span></h1>
+      <p class="lead">Controlar o brilho de um LED girando um potenciômetro: o Arduino lê um valor analógico e responde com um sinal PWM.</p>
+      <ul class="meta"><li>⏱ 40 a 50 min</li><li>🧪 Tinkercad + montagem real</li><li>🔌 Arduino Uno R3</li></ul>
+      <div class="jump"><a href="#codigo" class="cta">Ir para o código ↓</a><a href="#tinkercad" class="cta ghost">Roteiro passo a passo</a></div>
+    </div>
+    <div class="hero-learn"><h3>Você vai aprender</h3><ul><li>Entrada analógica: <code>analogRead()</code> e o conversor de 0 a 1023</li><li>Saída PWM: <code>analogWrite()</code> de 0 a 255</li><li>Conversão de escalas com <code>map()</code> e uso do Monitor Serial</li></ul></div>
+  </section>
+
+  <section class="grid2">
+    <div class="panel blue"><h2>Esquema ilustrado</h2><a href="../assets/img/pratica2.svg" target="_blank" rel="noopener"><img class="esquema" src="../assets/img/pratica2.svg" alt="Esquema de montagem da prática 2"></a><p class="zoom">Toque na imagem para ampliar</p></div>
+    <div class="side">
+      <div class="panel lime"><h2>Componentes</h2><ul class="comp"><li><b>1×</b> Arduino Uno R3 + cabo USB</li><li><b>1×</b> Protoboard</li><li><b>1×</b> Potenciômetro de 10 kΩ</li><li><b>1×</b> LED 5 mm</li><li><b>1×</b> Resistor de 220 Ω</li><li><b>5×</b> Jumpers macho-macho</li></ul></div>
+      <div class="panel dark"><h2>Ligações</h2><table class="lig"><tr><th>5V</th><td>Potenciômetro — pino 1 (ponta)</td></tr><tr><th>A0</th><td>Potenciômetro — pino 2 (meio, cursor)</td></tr><tr><th>GND</th><td>Trilha (−) → potenciômetro — pino 3 (ponta)</td></tr><tr><th>Pino 11 (~PWM)</th><td>LED — perna longa (+)</td></tr><tr><th>LED — perna curta (−)</th><td>Resistor de 220 Ω → trilha (−)</td></tr></table></div>
+    </div>
+  </section>
+
+  <section class="steps" id="tinkercad">
+    <div class="step-head"><span class="num">1</span><div><h2>Teste no Tinkercad</h2><p>Monte e simule o circuito no computador antes de mexer nos componentes.</p></div></div>
+    <ol><li>Crie um novo circuito e coloque o <b>Arduino Uno R3</b> e uma <b>protoboard pequena</b>.</li><li>Arraste um <b>potenciômetro</b> para a protoboard, com cada uma das 3 pernas em uma linha diferente. No inspetor, ajuste a resistência para <b>10 kΩ</b>.</li><li>Ligue: <b>5V</b> → perna de uma ponta do potenciômetro; <b>A0</b> → perna do meio; a outra ponta → <b>GND</b> (pela trilha −).</li><li>Coloque o <b>LED</b> e um <b>resistor de 220 Ω</b> (perna curta → resistor → trilha −). Ligue o <b>pino 11</b> à perna longa do LED.</li><li>Em <b>Código → Texto</b>, cole o código desta página e clique em <b>Iniciar simulação</b>.</li><li>Durante a simulação, clique no potenciômetro e gire o botão com o mouse: o brilho do LED muda. Abra o <b>Monitor serial</b> (parte de baixo do painel de código) para ver os valores lidos.</li></ol>
+  </section>
+  <section class="steps" id="real">
+    <div class="step-head"><span class="num">2</span><div><h2>Montagem real</h2><p>Agora com a placa, a protoboard e os componentes de verdade.</p></div></div>
+    <ol><li>Com o USB desconectado, encaixe o potenciômetro na protoboard, com as 3 pernas em linhas diferentes.</li><li>Ligue 5V do Arduino a uma ponta, A0 ao pino do meio e a outra ponta ao GND (use a trilha −).</li><li>Monte o LED com o resistor de 220 Ω até a trilha (−) e ligue o pino 11 à perna longa.</li><li>Conecte o USB, selecione <b>Arduino Uno</b> e a porta, cole o código e clique em <b>Carregar</b>.</li><li>Abra <b>Ferramentas → Monitor Serial</b> e ajuste a velocidade para <b>9600</b>. Gire o potenciômetro e acompanhe a leitura, a tensão e o brilho.</li><li>Extra: abra <b>Ferramentas → Plotter Serial</b> para ver um gráfico dos valores em tempo real.</li></ol>
+    <p class="alerta">⚠️ Sempre monte ou altere o circuito com o cabo USB <b>desconectado</b>. Nunca ligue o 5V diretamente no GND.</p>
+  </section>
+
+  <section id="codigo"><h2 class="sec">#&lt; código &gt;</h2><div class="code">
+    <div class="code-bar"><span class="dots"><i></i><i></i><i></i></span><span class="fname">pratica2_potenciometro.ino</span>
+      <span class="actions"><button class="btn-copy" data-target="pratica2_potenciometro.ino">Copiar</button><a class="btn-dl" href="../assets/codigos/pratica2_potenciometro.ino" download>Baixar .ino</a></span></div>
+    <pre id="pratica2_potenciometro.ino"><code><span class="c">/*
+  Oficina de Robótica SELFÍS — Prática 2: Dimmer com potenciômetro
+  Placa: Arduino Uno R3
+  Ligações: potenciômetro -&gt; 5V, A0 (pino do meio) e GND
+            LED -&gt; pino 11 (PWM) com resistor de 220 ohms até o GND
+*/</span>
+
+<span class="k">const</span> <span class="k">int</span> PINO_POT = <span class="n">A0</span>;   <span class="c">// entrada analógica: lê de 0 a 1023</span>
+<span class="k">const</span> <span class="k">int</span> PINO_LED = <span class="n">11</span>;   <span class="c">// saída PWM (~): escreve de 0 a 255</span>
+
+<span class="k">void</span> <span class="f">setup</span>() {
+  <span class="f">pinMode</span>(PINO_LED, <span class="n">OUTPUT</span>);
+  <span class="f">Serial</span>.<span class="f">begin</span>(<span class="n">9600</span>);      <span class="c">// abre a comunicação com o computador (Monitor Serial)</span>
+}
+
+<span class="k">void</span> <span class="f">loop</span>() {
+  <span class="c">// 1) Lê a posição do potenciômetro (0 V -&gt; 0 ... 5 V -&gt; 1023)</span>
+  <span class="k">int</span> leitura = <span class="f">analogRead</span>(PINO_POT);
+
+  <span class="c">// 2) Converte a escala 0–1023 para 0–255 (a escala do PWM)</span>
+  <span class="k">int</span> brilho = <span class="f">map</span>(leitura, <span class="n">0</span>, <span class="n">1023</span>, <span class="n">0</span>, <span class="n">255</span>);
+
+  <span class="c">// 3) Aplica o brilho no LED</span>
+  <span class="f">analogWrite</span>(PINO_LED, brilho);
+
+  <span class="c">// 4) Mostra os valores no Monitor Serial</span>
+  <span class="k">float</span> tensao = leitura * (<span class="n">5.0</span> / <span class="n">1023.0</span>);
+  <span class="f">Serial</span>.<span class="f">print</span>(<span class="s">"Leitura: "</span>);
+  <span class="f">Serial</span>.<span class="f">print</span>(leitura);
+  <span class="f">Serial</span>.<span class="f">print</span>(<span class="s">"  |  Tensao: "</span>);
+  <span class="f">Serial</span>.<span class="f">print</span>(tensao, <span class="n">2</span>);
+  <span class="f">Serial</span>.<span class="f">print</span>(<span class="s">" V  |  Brilho: "</span>);
+  <span class="f">Serial</span>.<span class="f">println</span>(brilho);
+
+  <span class="f">delay</span>(<span class="n">100</span>);              <span class="c">// pequena pausa para o Monitor Serial não "correr"</span>
+}
+</code></pre>
+  </div></section>
+
+  <section class="panel dark explica"><h2>Como funciona?</h2><p>O potenciômetro ligado entre 5 V e GND é um <b>divisor de tensão</b>: o pino do meio entrega uma tensão entre 0 V e 5 V conforme a posição do eixo.</p><p>O conversor analógico-digital do Arduino (10 bits) transforma essa tensão em um número de <b>0 a 1023</b>. Cada passo vale cerca de 5 V ÷ 1023 ≈ 4,9 mV.</p><p>O LED não recebe uma tensão “intermediária”: o pino 11 liga e desliga centenas de vezes por segundo (<b>PWM</b>). O valor de 0 a 255 define quanto tempo ele fica ligado em cada ciclo; nossos olhos percebem isso como brilho maior ou menor. Por isso o LED precisa estar em um pino com <b>~</b> (3, 5, 6, 9, 10 ou 11).</p></section>
+
+  <section class="grid2 eq">
+    <div class="panel yellow"><h2>Desafios</h2><ol><li>Inverta o controle: girar para a direita deve <b>apagar</b> o LED. (Dica: troque a ordem dos números no <code>map</code>.)</li><li>Use o potenciômetro para controlar a <b>velocidade</b> com que o LED pisca (solução abaixo).</li><li>Acenda o LED só quando a leitura passar de 512, usando <code>if</code>.</li></ol>
+      <details><summary>Ver a solução do desafio 2</summary><div class="code">
+    <div class="code-bar"><span class="dots"><i></i><i></i><i></i></span><span class="fname">desafio2_pisca_variavel.ino</span>
+      <span class="actions"><button class="btn-copy" data-target="desafio2_pisca_variavel.ino">Copiar</button><a class="btn-dl" href="../assets/codigos/desafio2_pisca_variavel.ino" download>Baixar .ino</a></span></div>
+    <pre id="desafio2_pisca_variavel.ino"><code><span class="c">/*
+  Oficina de Robótica SELFÍS — Desafio da Prática 2
+  O potenciômetro controla a VELOCIDADE com que o LED pisca.
+  Mesma montagem da Prática 2.
+*/</span>
+<span class="k">const</span> <span class="k">int</span> PINO_POT = <span class="n">A0</span>;
+<span class="k">const</span> <span class="k">int</span> PINO_LED = <span class="n">11</span>;
+
+<span class="k">void</span> <span class="f">setup</span>() {
+  <span class="f">pinMode</span>(PINO_LED, <span class="n">OUTPUT</span>);
+}
+
+<span class="k">void</span> <span class="f">loop</span>() {
+  <span class="k">int</span> leitura = <span class="f">analogRead</span>(PINO_POT);            <span class="c">// 0 a 1023</span>
+  <span class="k">int</span> tempo = <span class="f">map</span>(leitura, <span class="n">0</span>, <span class="n">1023</span>, <span class="n">50</span>, <span class="n">1000</span>);   <span class="c">// 50 ms (rápido) a 1000 ms (lento)</span>
+
+  <span class="f">digitalWrite</span>(PINO_LED, <span class="n">HIGH</span>);
+  <span class="f">delay</span>(tempo);
+  <span class="f">digitalWrite</span>(PINO_LED, <span class="n">LOW</span>);
+  <span class="f">delay</span>(tempo);
+}
+</code></pre>
+  </div></details></div>
+    <div class="panel lime"><h2>Não funcionou?</h2><dl><dt>O LED só acende ou apaga, sem meio-termo</dt><dd>Ele não está em um pino PWM. Use o pino 11 (ou outro com ~).</dd><dt>A leitura fica “pulando” ou parada em 0/1023</dt><dd>O pino do meio do potenciômetro não está no A0, ou falta a ligação do 5V/GND.</dd><dt>O Monitor Serial mostra caracteres estranhos</dt><dd>Ajuste a velocidade do Monitor para 9600, igual ao <code>Serial.begin(9600)</code>.</dd></dl></div>
+  </section>
+
+  <section><h2 class="sec">Conheça os componentes desta prática</h2><div class="chips">
+    <a class="chip" href="../componentes/arduino/index.html"><img src="../assets/img/arduinoBig.svg" alt="">Arduino Uno R3</a><a class="chip" href="../componentes/protoboard/index.html"><img src="../assets/img/breadboardSmall.svg" alt="">Protoboard</a><a class="chip" href="../componentes/potenciometro/index.html"><img src="../assets/img/potBig.svg" alt="">Potenciômetro</a><a class="chip" href="../componentes/resistor/index.html"><img src="../assets/img/resistorBig.svg" alt="">Resistor</a>
+  </div></section>
+
+  <nav class="pager"><a href="../pratica-1/index.html">← Prática 1: Semáforo</a><a href="../pratica-3/index.html">Prática 3: Mistura de cores com LED RGB →</a></nav></main><footer><p><b>Oficina de Robótica com Arduino</b> · VII SELFÍS na IV SNCT · IFNMG – Campus Salinas · 2026</p><p>Prof. Clayton Ramos da Silva</p></footer><script src="../assets/app.js"></script></body></html>

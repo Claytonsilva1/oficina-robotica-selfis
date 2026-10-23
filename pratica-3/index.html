@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prática 3: Mistura de cores com LED RGB · Oficina de Robótica SELFÍS</title><meta name="description" content="Criar cores misturando luz vermelha, verde e azul em um LED RGB, controlando cada cor com PWM.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css"><link rel="icon" href="../assets/img/ledBig.svg">
+</head><body><header class="top">
+  <div class="logos"><span class="logo"><img src="../assets/logos/logo-snct.png" alt="SNCT" onerror="this.parentNode.classList.add('vazio')"><b>SNCT</b></span><span class="sep"></span><span class="logo"><img src="../assets/logos/logo-selfis.png" alt="SELFÍS" onerror="this.parentNode.classList.add('vazio')"><b>SELFÍS</b></span><span class="sep"></span><span class="logo"><img src="../assets/logos/logo-if.png" alt="IFNMG · Campus Salinas" onerror="this.parentNode.classList.add('vazio')"><b>IFNMG · Campus Salinas</b></span></div>
+  <nav><a href="../index.html">Início</a><a href="../componentes/index.html">Componentes</a><a href="../pratica-1/index.html">Prática 1</a><a href="../pratica-2/index.html">Prática 2</a><a href="../pratica-3/index.html">Prática 3</a></nav>
+</header><main>
+  <section class="hero" style="--c:#1E5BB8">
+    <div class="hero-txt">
+      <span class="tag">Prática 3</span>
+      <h1><span class="br">[</span> Mistura de cores com LED RGB <span class="br">]</span></h1>
+      <p class="lead">Criar cores misturando luz vermelha, verde e azul em um LED RGB, controlando cada cor com PWM.</p>
+      <ul class="meta"><li>⏱ 40 a 50 min</li><li>🧪 Tinkercad + montagem real</li><li>🔌 Arduino Uno R3</li></ul>
+      <div class="jump"><a href="#codigo" class="cta">Ir para o código ↓</a><a href="#tinkercad" class="cta ghost">Roteiro passo a passo</a></div>
+    </div>
+    <div class="hero-learn"><h3>Você vai aprender</h3><ul><li>Sistema aditivo de cores (RGB)</li><li>Três saídas PWM ao mesmo tempo</li><li>Criar e usar funções próprias e laços <code>for</code></li></ul></div>
+  </section>
+
+  <section class="grid2">
+    <div class="panel blue"><h2>Esquema ilustrado</h2><a href="../assets/img/pratica3.svg" target="_blank" rel="noopener"><img class="esquema" src="../assets/img/pratica3.svg" alt="Esquema de montagem da prática 3"></a><p class="zoom">Toque na imagem para ampliar</p></div>
+    <div class="side">
+      <div class="panel lime"><h2>Componentes</h2><ul class="comp"><li><b>1×</b> Arduino Uno R3 + cabo USB</li><li><b>1×</b> Protoboard</li><li><b>1×</b> LED RGB de cátodo comum</li><li><b>3×</b> Resistores de 220 Ω</li><li><b>6×</b> Jumpers macho-macho</li></ul></div>
+      <div class="panel dark"><h2>Ligações</h2><table class="lig"><tr><th>Pino 11 (~PWM)</th><td>Resistor 220 Ω → perna R (vermelho)</td></tr><tr><th>Pino 10 (~PWM)</th><td>Resistor 220 Ω → perna G (verde)</td></tr><tr><th>Pino 9 (~PWM)</th><td>Resistor 220 Ω → perna B (azul)</td></tr><tr><th>GND</th><td>Trilha (−) → perna comum (a mais longa)</td></tr></table></div>
+    </div>
+  </section>
+
+  <section class="steps" id="tinkercad">
+    <div class="step-head"><span class="num">1</span><div><h2>Teste no Tinkercad</h2><p>Monte e simule o circuito no computador antes de mexer nos componentes.</p></div></div>
+    <ol><li>Crie um novo circuito com <b>Arduino Uno R3</b> e uma <b>protoboard pequena</b>.</li><li>Arraste um <b>LED RGB</b> e encaixe as 4 pernas em linhas diferentes. No inspetor, confira se a polaridade está como <b>Cátodo comum</b>.</li><li>Passe o mouse sobre cada perna para ver o nome dela (vermelho, verde, azul e cátodo). <b>Atenção:</b> no Tinkercad a ordem das pernas pode ser diferente da do LED real; ligue pelo nome, não pela posição.</li><li>Coloque um <b>resistor de 220 Ω</b> em cada perna de cor. Ligue: <b>pino 11</b> → resistor do vermelho, <b>pino 10</b> → resistor do verde, <b>pino 9</b> → resistor do azul.</li><li>Ligue a perna do <b>cátodo</b> ao <b>GND</b>.</li><li>Em <b>Código → Texto</b>, cole o código desta página e clique em <b>Iniciar simulação</b>. O LED deve mostrar vermelho, verde, azul, amarelo, ciano, magenta e branco.</li></ol>
+  </section>
+  <section class="steps" id="real">
+    <div class="step-head"><span class="num">2</span><div><h2>Montagem real</h2><p>Agora com a placa, a protoboard e os componentes de verdade.</p></div></div>
+    <ol><li>Identifique as pernas do LED RGB: a <b>mais longa</b> é a comum. Na maioria dos modelos de cátodo comum a ordem é <b>R · comum · G · B</b>.</li><li>Com o USB desconectado, encaixe o LED com cada perna em uma linha. Coloque um resistor de 220 Ω em série com cada perna de cor, passando por cima do canal central, como no esquema.</li><li>Ligue os pinos 11, 10 e 9 às linhas dos resistores do vermelho, verde e azul. Ligue a perna comum ao GND (pela trilha −).</li><li>Conecte o USB, selecione <b>Arduino Uno</b> e a porta, cole o código e clique em <b>Carregar</b>.</li><li>Se as cores aparecerem trocadas (por exemplo, verde no lugar de azul), não precisa remontar: troque os números dos pinos no início do código.</li><li>Se o LED ficar aceso quando deveria apagar e as cores parecerem “invertidas”, ele é de <b>ânodo comum</b>: ligue a perna longa no <b>5V</b> e mude <code>ANODO_COMUM</code> para <code>true</code>.</li></ol>
+    <p class="alerta">⚠️ Sempre monte ou altere o circuito com o cabo USB <b>desconectado</b>. Nunca ligue o 5V diretamente no GND.</p>
+  </section>
+
+  <section id="codigo"><h2 class="sec">#&lt; código &gt;</h2><div class="code">
+    <div class="code-bar"><span class="dots"><i></i><i></i><i></i></span><span class="fname">pratica3_led_rgb.ino</span>
+      <span class="actions"><button class="btn-copy" data-target="pratica3_led_rgb.ino">Copiar</button><a class="btn-dl" href="../assets/codigos/pratica3_led_rgb.ino" download>Baixar .ino</a></span></div>
+    <pre id="pratica3_led_rgb.ino"><code><span class="c">/*
+  Oficina de Robótica SELFÍS — Prática 3: Mistura de cores com LED RGB
+  Placa: Arduino Uno R3
+  Ligações: perna R -&gt; resistor 220 ohms -&gt; pino 11
+            perna G -&gt; resistor 220 ohms -&gt; pino 10
+            perna B -&gt; resistor 220 ohms -&gt; pino 9
+            perna comum (a mais longa) -&gt; GND  (LED de CÁTODO comum)
+*/</span>
+
+<span class="k">const</span> <span class="k">int</span> PINO_R = <span class="n">11</span>;
+<span class="k">const</span> <span class="k">int</span> PINO_G = <span class="n">10</span>;
+<span class="k">const</span> <span class="k">int</span> PINO_B = <span class="n">9</span>;
+
+<span class="c">// Se o seu LED for de ÂNODO comum (perna longa no 5V), troque false por true</span>
+<span class="k">const</span> <span class="k">bool</span> ANODO_COMUM = <span class="k">false</span>;
+
+<span class="k">void</span> <span class="f">setup</span>() {
+  <span class="f">pinMode</span>(PINO_R, <span class="n">OUTPUT</span>);
+  <span class="f">pinMode</span>(PINO_G, <span class="n">OUTPUT</span>);
+  <span class="f">pinMode</span>(PINO_B, <span class="n">OUTPUT</span>);
+}
+
+<span class="c">// Função que acende o LED com uma mistura de vermelho, verde e azul (0 a 255 cada)</span>
+<span class="k">void</span> cor(<span class="k">int</span> r, <span class="k">int</span> g, <span class="k">int</span> b) {
+  <span class="k">if</span> (ANODO_COMUM) {       <span class="c">// no ânodo comum a lógica é invertida</span>
+    r = <span class="n">255</span> - r;
+    g = <span class="n">255</span> - g;
+    b = <span class="n">255</span> - b;
+  }
+  <span class="f">analogWrite</span>(PINO_R, r);
+  <span class="f">analogWrite</span>(PINO_G, g);
+  <span class="f">analogWrite</span>(PINO_B, b);
+}
+
+<span class="k">void</span> <span class="f">loop</span>() {
+  <span class="c">// Cores primárias da luz</span>
+  cor(<span class="n">255</span>, <span class="n">0</span>, <span class="n">0</span>);     <span class="f">delay</span>(<span class="n">1000</span>);   <span class="c">// vermelho</span>
+  cor(<span class="n">0</span>, <span class="n">255</span>, <span class="n">0</span>);     <span class="f">delay</span>(<span class="n">1000</span>);   <span class="c">// verde</span>
+  cor(<span class="n">0</span>, <span class="n">0</span>, <span class="n">255</span>);     <span class="f">delay</span>(<span class="n">1000</span>);   <span class="c">// azul</span>
+
+  <span class="c">// Cores secundárias (soma de duas primárias)</span>
+  cor(<span class="n">255</span>, <span class="n">255</span>, <span class="n">0</span>);   <span class="f">delay</span>(<span class="n">1000</span>);   <span class="c">// amarelo  = R + G</span>
+  cor(<span class="n">0</span>, <span class="n">255</span>, <span class="n">255</span>);   <span class="f">delay</span>(<span class="n">1000</span>);   <span class="c">// ciano    = G + B</span>
+  cor(<span class="n">255</span>, <span class="n">0</span>, <span class="n">255</span>);   <span class="f">delay</span>(<span class="n">1000</span>);   <span class="c">// magenta  = R + B</span>
+
+  <span class="c">// Todas juntas</span>
+  cor(<span class="n">255</span>, <span class="n">255</span>, <span class="n">255</span>); <span class="f">delay</span>(<span class="n">1000</span>);   <span class="c">// branco   = R + G + B</span>
+
+  <span class="c">// Transição suave: do vermelho para o azul</span>
+  <span class="k">for</span> (<span class="k">int</span> i = <span class="n">0</span>; i &lt;= <span class="n">255</span>; i++) {
+    cor(<span class="n">255</span> - i, <span class="n">0</span>, i);
+    <span class="f">delay</span>(<span class="n">8</span>);
+  }
+  cor(<span class="n">0</span>, <span class="n">0</span>, <span class="n">0</span>);       <span class="f">delay</span>(<span class="n">500</span>);    <span class="c">// apagado</span>
+}
+</code></pre>
+  </div></section>
+
+  <section class="panel dark explica"><h2>Como funciona?</h2><p>Dentro do LED RGB há três pequenos LEDs. Cada um é controlado por um pino PWM, com valores de 0 (apagado) a 255 (brilho máximo).</p><p>A luz se mistura pelo <b>sistema aditivo</b>: vermelho + verde = amarelo; verde + azul = ciano; vermelho + azul = magenta; as três juntas = branco. Com 256 níveis por cor, são mais de 16 milhões de combinações possíveis.</p><p>A função <code>cor(r, g, b)</code> foi criada por nós para não repetir três <code>analogWrite</code> a cada cor. O laço <code>for</code> faz a transição suave, mudando o valor de 1 em 1.</p></section>
+
+  <section class="grid2 eq">
+    <div class="panel yellow"><h2>Desafios</h2><ol><li>Crie uma cor nova, como laranja: <code>cor(255, 80, 0)</code>.</li><li>Junte as Práticas 2 e 3: use o potenciômetro para escolher a cor do LED (solução abaixo).</li><li>Faça um arco-íris contínuo, com transições suaves entre todas as cores.</li></ol>
+      <details><summary>Ver a solução do desafio 2</summary><div class="code">
+    <div class="code-bar"><span class="dots"><i></i><i></i><i></i></span><span class="fname">desafio3_rgb_potenciometro.ino</span>
+      <span class="actions"><button class="btn-copy" data-target="desafio3_rgb_potenciometro.ino">Copiar</button><a class="btn-dl" href="../assets/codigos/desafio3_rgb_potenciometro.ino" download>Baixar .ino</a></span></div>
+    <pre id="desafio3_rgb_potenciometro.ino"><code><span class="c">/*
+  Oficina de Robótica SELFÍS — Desafio da Prática 3
+  Gire o potenciômetro para escolher a cor do LED RGB (roda de cores).
+  Montagem: a da Prática 3 + o potenciômetro da Prática 2 (5V, A0, GND).
+*/</span>
+<span class="k">const</span> <span class="k">int</span> PINO_R = <span class="n">11</span>;
+<span class="k">const</span> <span class="k">int</span> PINO_G = <span class="n">10</span>;
+<span class="k">const</span> <span class="k">int</span> PINO_B = <span class="n">9</span>;
+<span class="k">const</span> <span class="k">int</span> PINO_POT = <span class="n">A0</span>;
+
+<span class="k">void</span> <span class="f">setup</span>() {
+  <span class="f">pinMode</span>(PINO_R, <span class="n">OUTPUT</span>);
+  <span class="f">pinMode</span>(PINO_G, <span class="n">OUTPUT</span>);
+  <span class="f">pinMode</span>(PINO_B, <span class="n">OUTPUT</span>);
+}
+
+<span class="k">void</span> cor(<span class="k">int</span> r, <span class="k">int</span> g, <span class="k">int</span> b) {
+  <span class="f">analogWrite</span>(PINO_R, r);
+  <span class="f">analogWrite</span>(PINO_G, g);
+  <span class="f">analogWrite</span>(PINO_B, b);
+}
+
+<span class="k">void</span> <span class="f">loop</span>() {
+  <span class="c">// Divide o giro em 3 trechos de 256 passos: vermelho -&gt; verde -&gt; azul -&gt; vermelho</span>
+  <span class="k">int</span> h = <span class="f">map</span>(<span class="f">analogRead</span>(PINO_POT), <span class="n">0</span>, <span class="n">1023</span>, <span class="n">0</span>, <span class="n">767</span>);
+
+  <span class="k">if</span> (h &lt; <span class="n">256</span>) {              <span class="c">// vermelho -&gt; verde (passa pelo amarelo)</span>
+    cor(<span class="n">255</span> - h, h, <span class="n">0</span>);
+  } <span class="k">else</span> <span class="k">if</span> (h &lt; <span class="n">512</span>) {       <span class="c">// verde -&gt; azul (passa pelo ciano)</span>
+    h = h - <span class="n">256</span>;
+    cor(<span class="n">0</span>, <span class="n">255</span> - h, h);
+  } <span class="k">else</span> {                    <span class="c">// azul -&gt; vermelho (passa pelo magenta)</span>
+    h = h - <span class="n">512</span>;
+    cor(h, <span class="n">0</span>, <span class="n">255</span> - h);
+  }
+  <span class="f">delay</span>(<span class="n">20</span>);
+}
+</code></pre>
+  </div></details></div>
+    <div class="panel lime"><h2>Não funcionou?</h2><dl><dt>Uma das cores não acende</dt><dd>Confira o resistor e o fio daquela cor; teste trocando o pino no código.</dd><dt>As cores estão trocadas</dt><dd>A ordem das pernas varia entre fabricantes. Troque os números de PINO_R, PINO_G e PINO_B.</dd><dt>Tudo aceso e as cores “ao contrário”</dt><dd>O LED é de ânodo comum: perna longa no 5V e ANODO_COMUM = true.</dd></dl></div>
+  </section>
+
+  <section><h2 class="sec">Conheça os componentes desta prática</h2><div class="chips">
+    <a class="chip" href="../componentes/arduino/index.html"><img src="../assets/img/arduinoBig.svg" alt="">Arduino Uno R3</a><a class="chip" href="../componentes/protoboard/index.html"><img src="../assets/img/breadboardSmall.svg" alt="">Protoboard</a><a class="chip" href="../componentes/led-rgb/index.html"><img src="../assets/img/rgbBig.svg" alt="">LED RGB</a><a class="chip" href="../componentes/resistor/index.html"><img src="../assets/img/resistorBig.svg" alt="">Resistor</a>
+  </div></section>
+
+  <nav class="pager"><a href="../pratica-2/index.html">← Prática 2: Dimmer com potenciômetro</a><a href="../index.html">Início →</a></nav></main><footer><p><b>Oficina de Robótica com Arduino</b> · VII SELFÍS na IV SNCT · IFNMG – Campus Salinas · 2026</p><p>Prof. Clayton Ramos da Silva</p></footer><script src="../assets/app.js"></script></body></html>
